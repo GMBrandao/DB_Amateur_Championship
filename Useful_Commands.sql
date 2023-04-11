@@ -40,3 +40,16 @@ SELECT TOP(1) m.id as 'Match', (SELECT t.[name] FROM Team t WHERE t.id = m.homeT
 FROM Match m
 ORDER BY 'Goals in the match' DESC
 GO
+
+-- Most goals made by each team in a single match --
+SELECT t.[name] as 'Team', 
+    (SELECT Max(goalHome) 
+        FROM Match m
+        where t.id = homeTeam)
+    as 'Max goals at Home',
+    (SELECT Max(goalAway) 
+        FROM Match m
+        where t.id = awayTeam)
+    as 'Max goals Away'
+    FROM Team t
+GO

@@ -30,22 +30,6 @@ BEGIN
 END;
 GO
 
--- CREATE OR ALTER TRIGGER TGR_UniqueChampionship ON Championship INSTEAD OF INSERT
--- AS
--- BEGIN
---     DECLARE @id int
---     SELECT @id = id FROM Championship
---     IF(@id < 2)
---     BEGIN
---         DECLARE @name varchar(50), @year int
---         SELECT @name = [name], @year = [year]
---         from inserted
-
---         UPDATE Championship SET [name] = @name, [year] = @year WHERE id = 1
---     END
--- END;
--- GO
-
 CREATE OR ALTER TRIGGER TGR_UpdateTeamsPerMatch ON Match AFTER INSERT
 AS
 BEGIN
