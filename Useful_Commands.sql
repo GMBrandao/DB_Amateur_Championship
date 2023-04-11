@@ -1,13 +1,15 @@
 USE DB_Championship;
 GO
 -- Select the champion --
-SELECT TOP(1) t.name as 'Teams', t.points as 'Points', t.win as 'Wins',
-    t.draw as 'Drawn', t.lose as 'Loses', (t.goalFor - t.goalAgainst) as 'Goals Difference'
-    FROM Team t
-    ORDER BY t.points, t.win, 'Goals difference'
+SELECT TOP(1) [name] as 'Teams', points as 'Points', win as 'Wins',
+    draw as 'Drawn', lose as 'Loses', goalFor as 'Goals For', goalAgainst as 'Goals Against',
+    (goalFor - goalAgainst) as 'Goals Difference'
+    FROM Team
+    ORDER BY points desc, win desc, 'Goals difference' desc
 
 -- Select all Teams Standings -- 
-select * FROM Championship;
-select * FROM Match;
-select * FROM Team;
-GO
+SELECT [name] as 'Teams', points as 'Points', win as 'Wins',
+    draw as 'Drawn', lose as 'Loses', goalFor as 'Goals For', goalAgainst as 'Goals Against',
+    (goalFor - goalAgainst) as 'Goals Difference'
+    FROM Team
+    ORDER BY points desc, win desc, 'Goals difference' desc
